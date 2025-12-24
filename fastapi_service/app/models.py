@@ -1,0 +1,11 @@
+from sqlalchemy import Column, Integer, Float, Boolean, String
+from .database import Base
+
+class Product(Base):
+    __tablename__ = "products"
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, nullable=True)
+    description = Column(String, nullable=True )
+    price = Column(Float, nullable=True)
+    is_available = Column(Boolean, nullable=True, default=True)

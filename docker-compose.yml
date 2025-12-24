@@ -1,0 +1,25 @@
+services:
+  fastapi:
+    build: ./fastapi_service
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./fastapi_service/app:/app/app
+    environment:
+      - DATABASE_URL=sqlite:///./products.db
+    working_dir: /app
+
+  django:
+    build: ./django_service
+    ports:
+      - "8001:8000"
+    volumes:
+      - ./django_service:/app
+    depends_on:
+      - fastapi
+    environment:
+      - FASTAPI_URL=http://fastapi:8000
+    command: >
+      sh -c "sleep 3 &&
+             python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"

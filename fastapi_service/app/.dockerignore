@@ -1,0 +1,21 @@
+# fastapi_service/.dockerignore
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+.env
+.git/
+.gitignore
+README.md
+*.db
+*.sqlite3
+data/
+*.log
+*.tmp
+.vscode/
+.idea/
